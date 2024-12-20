@@ -52,7 +52,7 @@ include "AddArticle.php";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </a>
-        <a href="blablack_listeck"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <a href="black_liste.php"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
             <span class="sr-only">Blacklist</span>
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v6m6-6a9 9 0 11-12 0 9 9 0 0112 0z" />
@@ -117,9 +117,9 @@ include "AddArticle.php";
     <main class="p-6 sm:p-10 space-y-6">
     <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
         <div class="mr-6">
-          <h1 class="text-4xl font-semibold mb-2">User Information
+          <h1 class="text-4xl font-semibold mb-2">Article List
           </h1>
-          <h2 class="text-gray-600 ml-0.5">Welcome to your Blog Dashboard</h2>
+          <h2 class="text-gray-600 ml-0.5">List of all the articles that are currently active</h2>
         </div>
         <div class="flex flex-wrap items-start justify-end -mb-3">     
           <button id="addatrticle" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
@@ -140,7 +140,7 @@ include "AddArticle.php";
           $resultt = mysqli_query($conn,$sqll);
           $Admindata = mysqli_fetch_row($resultt);
           $idAdmin = $Admindata[0];
-        $sql = "SELECT * FROM Article where Id_User='$idAdmin'";
+        $sql = "SELECT * FROM Article a left join Archive r on a.Id_Article = r.Id_Article where a.Id_User='$idAdmin' and r.Id_Article is null";
         $result = mysqli_query($conn,$sql);
         while($row = mysqli_fetch_row($result)){
          
@@ -175,13 +175,13 @@ include "AddArticle.php";
     }
         if(isset($_POST['Delete'])){
           $id_Article = $_POST['Delete'];
-          $sql1 = "SELECT * from Article where Id_Article = '.$id_Article.'";
-          $result = mysqli_connect($conn,sql2);
-          $sqll = "INSERT INTO Archive (Id_Article) VALUES ('$id_Article')";
+          $sql1 = "SELECT * from Article where Id_Article = '$id_Article'";
+          $result = mysqli_query($conn,$sql1);
+          $row = mysqli_fetch_row($result);
+          $sqll = "INSERT INTO Archive (Id_Article, Date_Archivage,Titre_Article, Contenu_Article, Image_Article, Article_Confirme, Id_User) VALUES ('$id_Article',  NOW(),'$row[1]', '$row[2]', '$row[3]', True, '$row[6]')";
           mysqli_query($conn,$sqll);
 
-          // $sql = "DELETE FROM Article where Id_Article='$id_Article'";
-          // mysqli_query($conn,$sql);
+         
         }
         afficheArtcile($conn);
 
