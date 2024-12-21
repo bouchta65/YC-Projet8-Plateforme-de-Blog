@@ -158,6 +158,10 @@ while ($row1 = mysqli_fetch_row($result1)) {
     $result6 = mysqli_query($conn,$sql6);
     $row6 = mysqli_fetch_row($result6);
 
+    $sql8 = "SELECT COUNT(id_Article) from Likes where Id_User='$Id_User' and Id_Article='$row1[0]'";
+    $result7 = mysqli_query($conn,$sql8);
+    $row7 = mysqli_fetch_row($result7);
+
     echo '
     <section>
       <div class="container mx-auto px-4 py-6 space-y-8 bg-gray-100 rounded-lg ">
@@ -178,15 +182,33 @@ while ($row1 = mysqli_fetch_row($result1)) {
               <img src="'.$row1[3].'" alt="Minimalism" class="w-full object-cover rounded-lg shadow-md" style="height: 350px;" />
             </div>
             <p class="text-gray-700 leading-relaxed mb-6">'.$row1[2].'</p>
-            <form method="POST">
+            <form method="POST">';
+
+              if($row7[0]>0){
+                echo '
+                  
+                  <button type="submit" name="likebutton" value="'.$row1[0].'" class="flex items-center text-blue-500 hover:text-blue-700 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7 7 7-7M5 10l7-7 7 7"></path>
+                </svg>
+                <span class="ml-2 text-sm font-semibold">'.$row6[0].'</span>
+              </button>
+                </form>
+                ';
+              }else{
+                  echo '
             <button type="submit" name="likebutton" value="'.$row1[0].'" class="flex items-center text-gray-500 hover:text-blue-500 focus:outline-none">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7 7 7-7M5 10l7-7 7 7"></path>
               </svg>
               <span class="ml-2 text-sm font-semibold">'.$row6[0].'</span>
             </button>
-            </form>
-          </div>
+            
+                  ';
+              }
+            echo '
+          </form>
+         </div>
           <div class="comments-section bg-white w-full rounded-lg shadow-md lg:max-w-md">
             <h2 class="text-xl font-semibold text-gray-800 mb-2 ml-4">Comments</h2>
             <div class="space-y-6 max-h-[400px] overflow-y-auto p-4">';
@@ -279,6 +301,25 @@ while ($row1 = mysqli_fetch_row($result1)) {
 
     }
 
+    if(isset($_POST['likebutton'])){
+      $id_Article=$_POST['likebutton'];
+      $sql8 = "SELECT COUNT(id_Article) from Likes where Id_User='$Id_User' and Id_Article='$id_Article'";
+      $result7 = mysqli_query($conn,$sql8);
+      $row7 = mysqli_fetch_row($result7);
+
+      echo $row7[0];
+      if($row7[0]>0){
+        $sql7="DELETE from Likes where Id_Article = '$id_Article' and Id_User = '$Id_User'";
+        mysqli_query($conn,$sql7);
+        echo "<script>window.location.href = window.location.href;</script>";
+
+      }else{
+        $sql9="INSERT into Likes(Id_Article,Id_User) values('$id_Article','$Id_User')";
+        mysqli_query($conn,$sql9);
+        echo "<script>window.location.href = window.location.href;</script>";
+      }
+    
+    }
 
 
     ?>
