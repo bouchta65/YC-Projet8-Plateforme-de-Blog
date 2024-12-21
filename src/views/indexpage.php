@@ -187,22 +187,98 @@ while ($row1 = mysqli_fetch_row($result1)) {
             </button>
             </form>
           </div>
-         
-            </section>';
-          
+          <div class="comments-section bg-white w-full rounded-lg shadow-md lg:max-w-md">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2 ml-4">Comments</h2>
+            <div class="space-y-6 max-h-[400px] overflow-y-auto p-4">';
 
 
+    $sql3 = "SELECT * from Commentaire where Id_Article = '$row1[0]' order by Id_Commentaire desc";
+    $result3 = mysqli_query($conn, $sql3);
+
+    if ($result3 && mysqli_num_rows($result3) > 0) {
+        while ($row3 = mysqli_fetch_row($result3)) {
+            $sql4 = "SELECT * from User where Id_User = '$row3[2]'";
+            $result4 = mysqli_query($conn, $sql4);
+            $row4 = mysqli_fetch_row($result4);
+            
+                $nameCommenters = explode(' ', $row4[1]);
+                $first2 = '';
+                foreach ($nameCommenters as $nameCommenter) {
+                    $first2 .= strtoupper($nameCommenter[0]);
+                }
                 
-               
-       
-    
+                if($Id_User==$row3[2]){
+                echo '
+                <div class="flex space-x-4 p-4 bg-gray-50 rounded-md shadow-sm hover:shadow-md transition">
+                <div class="w-16 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                  <span class="text-gray-500 font-bold text-[10px]">'.$first2.'</span>
+                </div>
+                <div class="flex-1">
+                  <p class="font-semibold text-gray-800">'.$row4[1].'</p>
+                  <p class="text-sm text-gray-500">'.$row3[4].'</p>
+                  <p class="text-gray-700 mt-2">'.$row3[1].'</p>
+                </div>
+                <form method="POST" class="flex items-center">
+                 <button type="submit" name="DeleteComment" title="Delete" value="'.$row3[0].'" class="bg-red-500 hover:bg-red-700 text-white p-2 rounded-full shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 9.75l-.664 9.345A2.25 2.25 0 0116.594 21H7.406a2.25 2.25 0 01-2.242-1.905L4.5 9.75m9.75-4.5v-1.5a2.25 2.25 0 10-4.5 0v1.5m11.25 0h-18" />
+                </svg>
+              </button>
+                </form>
+              </div>';
+              }else{
+                echo '
+                <div class="flex space-x-4 p-4 bg-gray-50 rounded-md shadow-sm hover:shadow-md transition">
+                  <div class="w-16 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                    <span class="text-gray-500 font-bold text-[10px]">'.$first2.'</span>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-gray-800">'.$row4[1].'</p>
+                    <p class="text-sm text-gray-500">'.$row3[4].'</p>
+                    <p class="text-gray-700 mt-2">'.$row3[1].'</p>
+                  </div>
+                </div>';
+              }
+        }
+    } else {
+        echo '<p class="text-gray-500">No comments yet.</p>';
+    }
 
+    echo '
+       
+      </div>
+       <div class="mb-6 p-4 border-t border-gray-200">
+              <form method="POST"">
+          <textarea name="commentText" class="w-full p-4 rounded-md bg-gray-100 text-gray-800 placeholder-gray-500 resize-none border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" rows="3" placeholder="Write your comment..."></textarea>
+          <button type="submit" name="sendcomment" value="'.$row1[0].'" class="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition duration-300">
+          Post Comment
+          </button>
+          </form>
+        </div>
+    </div>
+  </div>
+</section>';
 
 
 }
 
+    if(isset($_POST['sendcomment'])){
+      $comment = $_POST['commentText'];
+      $id_Article = $_POST['sendcomment'];
+      $sql = "INSERT INTO Commentaire (Contenu,Id_User,Id_Article) values('$comment','$Id_User','$id_Article')";
+      mysqli_query($conn,$sql);
+      echo "<script>window.location.href = window.location.href;</script>";
 
+    }
     
+    if(isset($_POST['DeleteComment'])){
+      $Id_Commentaire = $_POST['DeleteComment'];
+      $sql = "DELETE from Commentaire where Id_Commentaire = '$Id_Commentaire'";
+      mysqli_query($conn,$sql);
+      echo "<script>window.location.href = window.location.href;</script>";
+
+    }
+
 
 
     ?>
