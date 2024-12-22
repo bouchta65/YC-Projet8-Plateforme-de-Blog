@@ -21,22 +21,21 @@ include "AddArticle.php";
 
 </head>
 <body class="flex bg-gray-100 min-h-screen">
-  <aside class="hidden sm:flex sm:flex-col">
-    <a href="#" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
-    <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
+<aside class="hidden sm:flex sm:flex-col fixed top-0 left-0 h-full w-20 z-50">
+  <a href="userBlog.php" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
+  <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
 
     </a>
     <div class="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
       <nav class="flex flex-col mx-4 my-6 space-y-4">
-      <a href="#" class="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg">
-          <span class="sr-only">Dashboard</span>
+      <a href="dashboardAdmin.php" class="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg">
+      <span class="sr-only">Dashboard</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
           </svg>
         </a>
-
         <a href="AdminUser.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
-          <span class="sr-only">Folders</span>
+        <span class="sr-only">Folders</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
           </svg>
@@ -47,14 +46,19 @@ include "AddArticle.php";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
         </a>
-   
+        <a href="Tages.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <span class="sr-only">Tags</span>
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7L14 14M5 12l7-7 7 7-7 7-7-7z" />
+        </svg>
+        </a>
         <a href="requestArticle.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Messages</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </a>
-        <a href="blablack_listeck"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <a href="black_liste.php"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
             <span class="sr-only">Blacklist</span>
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v6m6-6a9 9 0 11-12 0 9 9 0 0112 0z" />
@@ -62,12 +66,12 @@ include "AddArticle.php";
         </a>
 
         <a href="Archive.php"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
-        <span class="sr-only">Tags</span>
+        <span class="sr-only">Archives</span>
         <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M5 10h14M6 13h12m2-5a1 1 0 011 1v10a1 1 0 01-1 1H5a1 1 0 01-1-1V9a1 1 0 011-1h14z" />
         </svg>
         </a>
-  
+   
       </nav>
       <div class="inline-flex items-center justify-center h-20 w-20 border-t border-gray-700">
         <button class="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
@@ -80,7 +84,7 @@ include "AddArticle.php";
       </div>
     </div>
   </aside>
-  <div class="flex-grow text-gray-800">
+  <div class="flex-grow text-gray-800 lg:ml-20 md:ml-20 sm:ml-20">
     <header class="flex items-center h-20 px-6 sm:px-10 bg-white">
       <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
         <span class="sr-only">Menu</span>
@@ -98,8 +102,8 @@ include "AddArticle.php";
         <button class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
           <span class="sr-only">User Menu</span>
           <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
-            <span class="font-semibold"><?php echo $AdminName;?></span>
-            <span class="text-sm text-gray-600">Admin</span>
+            <span class="font-semibold"><?php echo $UserName;?></span>
+            <span class="text-sm text-gray-600"><?php echo $RolesUser;?></span>
           </div>
 
         </button>
@@ -161,9 +165,8 @@ include "AddArticle.php";
             </svg>
           </div>
           <div>
-            <span class="inline-block text-2xl font-bold">9</span>
-            <span class="inline-block text-xl text-gray-500 font-semibold">(14%)</span>
-            <span class="block text-gray-500"> test</span>
+            <span class="inline-block text-2xl font-bold"><?php echo $CountBlocker[0];?></span>
+            <span class="block text-gray-500"> Blocked</span>
           </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -173,8 +176,8 @@ include "AddArticle.php";
             </svg>
           </div>
           <div>
-            <span class="block text-2xl font-bold">83%</span>
-            <span class="block text-gray-500"> test</span>
+            <span class="block text-2xl font-bold"><?php echo $CountTags[0];?></span>
+            <span class="block text-gray-500"> Tags</span>
           </div>
         </div>
       </section>

@@ -20,9 +20,9 @@ include "statistiquesAdmin.php";
 
 </head>
 <body class="flex bg-gray-100 min-h-screen">
-  <aside class="hidden sm:flex sm:flex-col">
-    <a href="#" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
-    <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
+<aside class="hidden sm:flex sm:flex-col fixed top-0 left-0 h-full w-20 z-50">
+  <a href="userBlog.php" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
+  <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
 
     </a>
     <div class="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
@@ -45,13 +45,19 @@ include "statistiquesAdmin.php";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
         </a>
+        <a href="Tages.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <span class="sr-only">Tags</span>
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7L14 14M5 12l7-7 7 7-7 7-7-7z" />
+        </svg>
+        </a>
         <a href="requestArticle.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Messages</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </a>
-        <a href="blablack_listeck"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <a href="black_liste.php"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
             <span class="sr-only">Blacklist</span>
             <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v6m6-6a9 9 0 11-12 0 9 9 0 0112 0z" />
@@ -59,7 +65,7 @@ include "statistiquesAdmin.php";
         </a>
 
         <a href="Archive.php"  class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
-        <span class="sr-only">Tags</span>
+        <span class="sr-only">Archives</span>
         <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M5 10h14M6 13h12m2-5a1 1 0 011 1v10a1 1 0 01-1 1H5a1 1 0 01-1-1V9a1 1 0 011-1h14z" />
         </svg>
@@ -77,7 +83,7 @@ include "statistiquesAdmin.php";
       </div>
     </div>
   </aside>
-  <div class="flex-grow text-gray-800">
+  <div class="flex-grow text-gray-800 lg:ml-20 md:ml-20 sm:ml-20">
     <header class="flex items-center h-20 px-6 sm:px-10 bg-white">
       <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
         <span class="sr-only">Menu</span>
@@ -95,8 +101,8 @@ include "statistiquesAdmin.php";
         <button class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
           <span class="sr-only">User Menu</span>
           <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
-            <span class="font-semibold"><?php echo $AdminName;?></span>
-            <span class="text-sm text-gray-600">Admin</span>
+            <span class="font-semibold"><?php echo $UserName;?></span>
+            <span class="text-sm text-gray-600"><?php echo $RolesUser;?></span>
           </div>
 
         </button>
@@ -118,16 +124,9 @@ include "statistiquesAdmin.php";
         <div class="mr-6">
           <h1 class="text-4xl font-semibold mb-2">User Information
           </h1>
-          <h2 class="text-gray-600 ml-0.5">Welcome to your Blog Dashboard</h2>
+          <h2 class="text-gray-600 ml-0.5">Comprehensive list of all registered users on the platform</h2>
         </div>
-        <div class="flex flex-wrap items-start justify-end -mb-3">     
-          <button id="addatrticle" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-            Create new Article
-          </button>
-        </div>
+     
       </div>
 
       <div class="container mx-auto">
@@ -145,49 +144,128 @@ include "statistiquesAdmin.php";
         </thead>
         <tbody>
             <?php 
-            
-            function afficheUsers($conn){
-              $sqll = "SELECT Id_User FROM User WHERE Email_User = '".$_SESSION["user"]."'";
-              $resultt = mysqli_query($conn,$sqll);
-              $Admindata = mysqli_fetch_row($resultt);
-              $idAdmin = $Admindata[0];
-              
-            $sql = "SELECT * FROM User where Id_User<>1 and Id_User <>$idAdmin";
-            $result = mysqli_query($conn,$sql);
-            while($row = mysqli_fetch_row($result)){
-                echo '<tr class="hover:bg-gray-100">
-                <td class="py-2 px-4 border-b">'.$row[0].'</td>
-                <td class="py-2 px-4 border-b">'.$row[1].'</td>
-                <td class="py-2 px-4 border-b">'.$row[3].'</td>
-                <td class="py-2 px-4 border-b">'.$row[4].'</td>
-                <td class="py-2 px-4 border-b text-center">
-                  <div class="flex justify-center space-x-4">
-                   <form method="POST" action="" >
-                    <button type="submit" value="'.$row[0].'" class="text-blue-500 hover:text-blue-700" name="Edit" title="Edit">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 3.487a3.375 3.375 0 014.774 4.774l-9.84 9.84a2.25 2.25 0 01-1.011.564l-3.486.873a.75.75 0 01-.91-.91l.873-3.486a2.25 2.25 0 01.564-1.011l9.84-9.84z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.25 8.25L15.75 4.75" />
-                      </svg>
-                    </button>
-                    <button type="submit" class="text-red-500 hover:text-red-700" value="'.$row[0].'" name="Delete" title="Delete">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 9.75l-.664 9.345A2.25 2.25 0 0116.594 21H7.406a2.25 2.25 0 01-2.242-1.905L4.5 9.75m9.75-4.5v-1.5a2.25 2.25 0 10-4.5 0v1.5m11.25 0h-18" />
-                      </svg>
-                    </button>
+    
+     function afficheUsers($conn) {
+       $sqll = "SELECT Id_User FROM User WHERE Email_User = '" . $_SESSION["user"] . "'";
+       $resultt = mysqli_query($conn, $sqll);
+       $Admindata = mysqli_fetch_row($resultt);
+       $idAdmin = $Admindata[0];
+     
+       $sql = "SELECT * FROM User u LEFT JOIN Black_Liste b ON u.Id_User = b.Id_User WHERE u.Id_User <> 1 AND u.Id_User <> $idAdmin and b.Id_User IS NULL";
+       $result = mysqli_query($conn, $sql);
+       while ($row = mysqli_fetch_row($result)) {
+         echo '<tr class="hover:bg-gray-100">
+                 <td class="py-2 px-4 border-b">' . $row[0] . '</td>
+                 <td class="py-2 px-4 border-b">' . $row[1] . '</td>
+                 <td class="py-2 px-4 border-b">' . $row[3] . '</td>
+                 <td class="py-2 px-4 border-b">' . $row[4] . '</td>
+                 <td class="py-2 px-4 border-b text-center">
+                   <div class="flex justify-center space-x-4">
+                     <form method="POST" action="">
+                       <button type="submit" value="' . $row[0] . '" class="text-blue-500 hover:text-blue-700" name="Edit" title="Edit">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 3.487a3.375 3.375 0 014.774 4.774l-9.84 9.84a2.25 2.25 0 01-1.011.564l-3.486.873a.75.75 0 01-.91-.91l.873-3.486a2.25 2.25 0 01.564-1.011l9.84-9.84z" />
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M19.25 8.25L15.75 4.75" />
+                         </svg>
+                       </button>
+                       <button type="submit" class="text-red-500 hover:text-red-700" value="' . $row[0] . '" name="Delete" title="Delete">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 9.75l-.664 9.345A2.25 2.25 0 0116.594 21H7.406a2.25 2.25 0 01-2.242-1.905L4.5 9.75m9.75-4.5v-1.5a2.25 2.25 0 10-4.5 0v1.5m11.25 0h-18" />
+                         </svg>
+                       </button>
                      </form>
-                  </div>
-                </td>
-              </tr>';
-            }
-        }
-            if(isset($_POST['Delete'])){
-                $id_user = $_POST['Delete'];
-                $sql = "DELETE from User where Id_User='$id_user'";
-                mysqli_query($conn,$sql);
-            }
-            afficheUsers($conn);
+                   </div>
+                 </td>
+               </tr>';
+       }
+     }
+     
+     if (isset($_POST['Delete'])) {
+      $id_User = $_POST['Delete'];
+       echo '
+            <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-80 relative">
+        <form method="POST" action="">
+             <button id="closePopup" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          <h2 class="text-lg font-semibold text-gray-800">Confirmer laction</h2>
+          <p class="mt-2 text-gray-600">Êtes-vous sûr de vouloir effectuer cette action ?</p>
+          
+          <div class="mt-4 flex justify-between">
+    
+              <button type="submit" name="Supprimer" value="'.$id_User.'" class="px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+                Supprimer
+              </button>
+              <button type="submit" name="Bloquer" value="'.$id_User.'" class="px-4 py-2 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                Bloquer
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+       ';
+     }
+     if (isset($_POST['Supprimer'])) {
+      $id_user = $_POST['Supprimer'];
+      $sql = "DELETE from User where Id_User ='$id_user'";
+      mysqli_query($conn,$sql);
+     }
+
+     if (isset($_POST['Bloquer'])) {
+      $iid_user = $_POST['Bloquer'];
+      echo $iid_user;
+
+       echo '
+                <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div class="bg-white rounded-lg shadow-lg p-6 w-80 relative">
+          <form method="POST" action="">
+            <button type="submit" id="closePopup" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             
-            ?>
+            <h2 class="text-lg font-semibold text-gray-800">Confirmer laction</h2>
+            <p class="mt-2 text-gray-600">Please enter the reason for the block?</p>
+            
+            <input type="text" name="raison" id="inputRaison" class="border p-2 w-full" placeholder="Enter reason">
+            
+            <div class="mt-4 flex justify-between">
+              
+                <button type="submit" name="Valide_block" value="'.$iid_user.'" class="px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+                  Bloquer
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+       ';
+     }
+
+     if (isset($_POST['Valide_block'])) {
+      $id_user = $_POST['Valide_block'];
+      $raison = $_POST['raison'];
+     
+      $sql1 = "INSERT INTO Black_Liste (Raison, Id_User) VALUES ('$raison', '$id_user')";
+      mysqli_query($conn, $sql1);
+        
+  
+        
+     }
+     
+     afficheUsers($conn);
+     ?>
+     
+                
+        
+       
+        
+            
+       
     
         </tbody>
       </table>

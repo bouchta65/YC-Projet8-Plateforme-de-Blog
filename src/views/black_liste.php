@@ -20,9 +20,9 @@ include "statistiquesAdmin.php";
 
 </head>
 <body class="flex bg-gray-100 min-h-screen">
-  <aside class="hidden sm:flex sm:flex-col">
-    <a href="#" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
-    <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
+<aside class="hidden sm:flex sm:flex-col fixed top-0 left-0 h-full w-20 z-50">
+  <a href="userBlog.php" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
+  <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
 
     </a>
     <div class="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
@@ -44,6 +44,12 @@ include "statistiquesAdmin.php";
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
+        </a>
+        <a href="Tages.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <span class="sr-only">Tags</span>
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7L14 14M5 12l7-7 7 7-7 7-7-7z" />
+        </svg>
         </a>
         <a href="requestArticle.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Messages</span>
@@ -77,7 +83,7 @@ include "statistiquesAdmin.php";
       </div>
     </div>
   </aside>
-  <div class="flex-grow text-gray-800">
+  <div class="flex-grow text-gray-800 lg:ml-20 md:ml-20 sm:ml-20">
     <header class="flex items-center h-20 px-6 sm:px-10 bg-white">
       <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
         <span class="sr-only">Menu</span>
@@ -95,8 +101,8 @@ include "statistiquesAdmin.php";
         <button class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
           <span class="sr-only">User Menu</span>
           <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
-            <span class="font-semibold"><?php echo $AdminName;?></span>
-            <span class="text-sm text-gray-600">Admin</span>
+            <span class="font-semibold"><?php echo $UserName;?></span>
+            <span class="text-sm text-gray-600"><?php echo $RolesUser;?></span>
           </div>
 
         </button>
@@ -156,12 +162,12 @@ include "statistiquesAdmin.php";
                 <td class="py-2 px-4 border-b text-center">
                   <div class="flex justify-center space-x-4">
                    <form method="POST" action="" >
-                    <button type="submit" class="text-green-500 hover:text-green-700" value="'.$row[0].'" name="Unblock" title="Unblock">
+                    <button type="submit" class="text-green-500 hover:text-green-700" value="'.$row[2].'" name="Unblock" title="Unblock">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12l4-4m0 0l-4-4m4 4H5a3 3 0 00-3 3v7a3 3 0 003 3h12a3 3 0 003-3v-7a3 3 0 00-3-3z" />
                     </svg>
                     </button>
-                    <button type="submit" class="text-red-500 hover:text-red-700" value="'.$row[0].'" name="Delete" title="Delete">
+                    <button type="submit" class="text-red-500 hover:text-red-700" value="'.$row[2].'" name="Delete" title="Delete">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 9.75l-.664 9.345A2.25 2.25 0 0116.594 21H7.406a2.25 2.25 0 01-2.242-1.905L4.5 9.75m9.75-4.5v-1.5a2.25 2.25 0 10-4.5 0v1.5m11.25 0h-18" />
                       </svg>
@@ -175,6 +181,11 @@ include "statistiquesAdmin.php";
             if(isset($_POST['Delete'])){
                 $id_user = $_POST['Delete'];
                 $sql = "DELETE from User where Id_User='$id_user'";
+                mysqli_query($conn,$sql);
+            }
+            if(isset($_POST['Unblock'])){
+                $id_user = $_POST['Unblock'];
+                $sql = "DELETE from Black_Liste where Id_User='$id_user'";
                 mysqli_query($conn,$sql);
             }
             afficheUsers($conn);
