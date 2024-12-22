@@ -1,11 +1,15 @@
 
 <?php
-include "src/db/config.php";
+include "../db/config.php";
 
 if(isset($_POST['registrebutton'])){
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+    $name = htmlspecialchars($_POST['name']);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format");
+    }
+    
+  $password = htmlspecialchars($_POST['password']);
   $password_hashed = password_hash($password, PASSWORD_BCRYPT);
   $date = $_POST['date'];
   $currentDate = time();
