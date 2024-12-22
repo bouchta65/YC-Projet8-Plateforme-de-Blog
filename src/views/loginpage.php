@@ -12,11 +12,19 @@ include "registre.php";
   <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body >
+<body class="bg-gradient-to-r from-blue-500 to-purple-500">
+<div class="absolute top-0 left-0 w-full h-full z-0">
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-blue-600 via-purple-600 to-transparent opacity-50"></div>
+    <div class="absolute top-[10%] left-[20%] w-32 h-32 bg-white opacity-20 rounded-full"></div>
+    <div class="absolute top-[30%] left-[50%] w-24 h-24 bg-white opacity-30 rounded-full"></div>
+    <div class="absolute top-[50%] left-[70%] w-36 h-36 bg-white opacity-15 rounded-full"></div>
+    <div class="absolute top-[70%] left-[10%] w-20 h-20 bg-white opacity-25 rounded-full"></div>
+    <div class="absolute top-[60%] left-[80%] w-28 h-28 bg-white opacity-10 rounded-full"></div>
+    <div class="absolute top-[15%] left-[60%] w-40 h-40 bg-white opacity-20 rounded-full"></div>
+  </div>
 <section id="login" >
 <div class="font-[sans-serif] relative">
       <div class="h-[240px] font-[sans-serif]">
-      <img src="../../public/assets/images/Yellow Black Photo Collage Facebook Cover.png" alt="Banner Image" class="w-full h-full object-cover" />
       </div>
 
       <div class="relative -mt-40 m-4">
@@ -67,7 +75,6 @@ include "registre.php";
 <section id="registre" class="hidden">
 <div class="font-[sans-serif] relative">
       <div class="h-[240px] font-[sans-serif]">
-        <img src="public/assets/images/Yellow Black Photo Collage Facebook Cover.png" alt="Banner Image" class="w-full h-full object-cover" />
       </div>
 
       <div class="relative -mt-40 m-4">
@@ -134,7 +141,7 @@ include "registre.php";
 
 
 
-<script src="public/assets/js/index.js"></script>
+<script src="../..//public/assets/js/index.js"></script>
 
 </body>
 </html>
