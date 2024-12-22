@@ -18,6 +18,8 @@ function closeArt(){
     })
 }
 
+
+
 showArticleModal()
 closeArt()
 
