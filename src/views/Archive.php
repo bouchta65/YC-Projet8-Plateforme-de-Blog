@@ -1,7 +1,7 @@
 <?php
 include "../db/config.php";
 session_start();
-if (isset($_SESSION["user"]) && $_SESSION["role"] == "Admin") {
+if (isset($_SESSION["user"])) {
    
 }else{
     header("Location: ../../index.php");
@@ -21,9 +21,10 @@ include "AddArticle.php";
 
 </head>
 <body class="flex bg-gray-100 min-h-screen">
-  <aside class="hidden sm:flex sm:flex-col">
-    <a href="#" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
-    <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
+<?php if($_SESSION["role"] == "Admin"){?>
+<aside class="hidden sm:flex sm:flex-col fixed top-0 left-0 h-full w-20 z-50">
+  <a href="userBlog.php" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
+  <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
 
     </a>
     <div class="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
@@ -46,6 +47,12 @@ include "AddArticle.php";
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
         </a>
+        <a href="Tages.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <span class="sr-only">Tags</span>
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7L14 14M5 12l7-7 7 7-7 7-7-7z" />
+        </svg>
+        </a>
         <a href="requestArticle.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Messages</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -60,7 +67,7 @@ include "AddArticle.php";
         </a>
 
         <a href="Archive.php"  class="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg">
-        <span class="sr-only">Tags</span>
+        <span class="sr-only">Archive</span>
         <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M5 10h14M6 13h12m2-5a1 1 0 011 1v10a1 1 0 01-1 1H5a1 1 0 01-1-1V9a1 1 0 011-1h14z" />
         </svg>
@@ -78,7 +85,50 @@ include "AddArticle.php";
       </div>
     </div>
   </aside>
-  <div class="flex-grow text-gray-800">
+
+ <?php  }else{ ?>
+    <aside class="hidden sm:flex sm:flex-col fixed top-0 left-0 h-full w-20 z-50">
+  <a href="userBlog.php" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
+  <img src="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" alt="Banner Image" class="w-full h-full object-cover" />
+
+    </a>
+    <div class="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
+      <nav class="flex flex-col mx-4 my-6 space-y-4">
+      <a href="dashboardAdmin.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+      <span class="sr-only">Dashboard</span>
+          <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        </a>
+        <a href="AdminArticle.php" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+          <span class="sr-only">Documents</span>
+          <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+        </a>
+    
+        <a href="Archive.php"  class="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg">
+        <span class="sr-only">Archive</span>
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M5 10h14M6 13h12m2-5a1 1 0 011 1v10a1 1 0 01-1 1H5a1 1 0 01-1-1V9a1 1 0 011-1h14z" />
+        </svg>
+        </a>
+   
+      </nav>
+      <div class="inline-flex items-center justify-center h-20 w-20 border-t border-gray-700">
+        <button class="p-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+          <span class="sr-only">Settings</span>
+          <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+  <?php  }?>
+  
+  <div class="flex-grow text-gray-800 lg:ml-20 md:ml-20 sm:ml-20">
     <header class="flex items-center h-20 px-6 sm:px-10 bg-white">
       <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
         <span class="sr-only">Menu</span>
@@ -96,8 +146,8 @@ include "AddArticle.php";
         <button class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
           <span class="sr-only">User Menu</span>
           <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
-            <span class="font-semibold"><?php echo $AdminName;?></span>
-            <span class="text-sm text-gray-600">Admin</span>
+            <span class="font-semibold"><?php echo $UserName;?></span>
+            <span class="text-sm text-gray-600"><?php echo $RolesUser;?></span>
           </div>
 
         </button>
@@ -120,16 +170,26 @@ include "AddArticle.php";
           <h1 class="text-4xl font-semibold mb-2">Archived Articles</h1>
           <h2 class="text-gray-600 ml-0.5">List of articles that have been archived</h2>
         </div>
-        <div class="flex flex-wrap items-start justify-end -mb-3">     
-          <button id="addatrticle" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-            Create new Article
+        <div class="flex flex-wrap items-start justify-end -mb-3">    
+            <form method="POST">
+          <button type="submit" id="deleteall" name ="deleteall" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
+            Delete All Article
           </button>
+          </form> 
         </div>
       </div>
+        <?php 
+        if(isset($_POST['deleteall'])){
+            $sql = "DELETE FROM article_tags WHERE Id_Article IN (SELECT Id_Article FROM Archive)";
+            mysqli_query($conn, $sql);
 
+
+            $sql1 = "DELETE FROM Article WHERE Id_Article IN (SELECT Id_Article FROM Archive)";
+            mysqli_query($conn,$sql1);
+            echo "<script>window.location.href = window.location.href;</script>";
+
+        }
+        ?>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <?php
