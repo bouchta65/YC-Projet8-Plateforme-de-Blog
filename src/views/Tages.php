@@ -15,7 +15,8 @@ include "statistiquesAdmin.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bruxy Blog</title>
+    <link rel="icon" href="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
@@ -122,9 +123,9 @@ include "statistiquesAdmin.php";
     <main class="p-6 sm:p-10 space-y-6">
     <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
         <div class="mr-6">
-          <h1 class="text-4xl font-semibold mb-2">User Information
+          <h1 class="text-4xl font-semibold mb-2">Tags Information
           </h1>
-          <h2 class="text-gray-600 ml-0.5">Comprehensive list of all registered users on the platform</h2>
+          <h2 class="text-gray-600 ml-0.5">All Available Tags on the Platform</h2>
         </div>
         <div class="flex flex-wrap items-start justify-end -mb-3">     
           <button id="addatrticle" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
@@ -261,7 +262,7 @@ include "statistiquesAdmin.php";
 <div id="ArticleModel" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 hidden">
         <form id="ArticleForm" class="bg-white rounded-lg w-full max-w-[30rem] sm:max-w-3/4 md:max-w-2/3 p-4 sm:p-6 shadow-lg overflow-y-auto" method="POST" action="Tages.php"  >
         <div class="flex justify-between items-center mb-4 sm:mb-6">
-        <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">Nouvelle Article</h2>
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">New Tag</h2>
         <button  id="closearticlemodel" class="text-gray-500 hover:text-gray-700 focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>

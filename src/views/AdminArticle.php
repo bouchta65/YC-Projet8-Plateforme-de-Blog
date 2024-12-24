@@ -15,7 +15,8 @@ if (isset($_SESSION["user"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bruxy Blog</title>
+    <link rel="icon" href="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
@@ -184,9 +185,13 @@ if (isset($_SESSION["user"])) {
         $sql = "SELECT * FROM Article a left join Archive r on a.Id_Article = r.Id_Article where a.Id_User='$idUser' and r.Id_Article is null";
         $result = mysqli_query($conn,$sql);
         while($row = mysqli_fetch_row($result)){
-          echo '<div class="w-50 bg-white shadow-md rounded-lg overflow-hidden">
+          echo '
+         
+          <div class="w-50 bg-white shadow-md rounded-lg overflow-hidden">
   <div class="relative">
+   <a href="articledetails.php?id='.$row[0].'">
     <img src="../../public/'.$row[3].'" alt="Article Image" class="w-full h-40 object-cover">
+    </a>
     <div class="absolute top-3 right-3 flex space-x-2">
       <form method="POST" action="">
         <button type="submit" name="Edit" title="Edit" value="'.$row[0].'" class="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded-full shadow">
@@ -222,7 +227,9 @@ if (isset($_SESSION["user"])) {
     <h2 class="text-lg font-semibold text-gray-800 mb-2">'.$row[1].'</h2>
     <p class="text-sm text-gray-500">Publié le : '.$row[4].'</p>
   </div>
-</div>';
+</div>
+'
+;
 
         
       }
@@ -268,12 +275,7 @@ if (isset($_SESSION["user"])) {
           <textarea name="Contenu_Article" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" rows="4" placeholder="Machine learning is...">'.$row[2].'</textarea>
           </div>
 
-           <div class="flex flex-col">
-        <label for="role" class="font-medium text-gray-600 text-sm sm:text-base">Change The Image</label>
-        <select id="role" name="role" class="mt-2 p-2 sm:p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="tag">tag</option>
-        </select>
-        </div>
+        
 
         </div>
 
@@ -345,7 +347,7 @@ if (isset($_SESSION["user"])) {
   <div id="ArticleModel" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 hidden">
   <form id="ArticleForm" class="bg-white rounded-lg w-full max-w-[60rem] sm:max-w-3/4 md:max-w-2/3 p-4 sm:p-6 shadow-lg overflow-y-auto" method='POST' action='#' enctype="multipart/form-data" >
     <div class="flex justify-between items-center mb-4 sm:mb-6">
-      <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">Nouvelle Article</h2>
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">New Article</h2>
       <button  id="closearticlemodel" class="text-gray-500 hover:text-gray-700 focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -370,7 +372,7 @@ if (isset($_SESSION["user"])) {
       <!-- Right Side Inputs -->
       <div class="w-full sm:w-1/3 bg-gray-100 rounded-lg p-4 space-y-4">
         <div class="flex flex-col">
-          <label for="imagearticle" class="font-medium text-gray-600 text-sm sm:text-base">Image d'Article</label>
+          <label for="imagearticle" class="font-medium text-gray-600 text-sm sm:text-base">Article Image</label>
           <input type="file" id="imagearticle" name="imagearticle" required class="mt-2 p-2 sm:p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
      

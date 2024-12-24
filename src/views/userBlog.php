@@ -148,7 +148,7 @@ include "AddArticle.php";
     <form method="POST" class="flex">
         <div class="relative w-full">
             <select name="selected_tag" class="py-2 pl-4 pr-12 w-full border-2 border-black placeholder-gray-400 focus:bg-gray-50 focus:outline-none rounded-lg" role="search">
-                <option value="" disabled selected>Select an option...</option>
+                <option value="" disabled selected>Filter by tag...</option>
                 <?php
                     $sql2 = "SELECT * FROM Tags";
                     $result2 = mysqli_query($conn, $sql2);
@@ -340,7 +340,7 @@ while ($row1 = mysqli_fetch_row($result1)) {
   <div id="ArticleModel" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 hidden">
   <form id="ArticleForm" class="bg-white rounded-lg w-full max-w-[60rem] sm:max-w-3/4 md:max-w-2/3 p-4 sm:p-6 shadow-lg overflow-y-auto" method='POST' action='#' enctype="multipart/form-data" >
     <div class="flex justify-between items-center mb-4 sm:mb-6">
-      <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">Nouvelle Article</h2>
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-800"> New Article</h2>
       <button  id="closearticlemodel" class="text-gray-500 hover:text-gray-700 focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -365,7 +365,7 @@ while ($row1 = mysqli_fetch_row($result1)) {
       <!-- Right Side Inputs -->
       <div class="w-full sm:w-1/3 bg-gray-100 rounded-lg p-4 space-y-4">
         <div class="flex flex-col">
-          <label for="imagearticle" class="font-medium text-gray-600 text-sm sm:text-base">Image d'Article</label>
+          <label for="imagearticle" class="font-medium text-gray-600 text-sm sm:text-base">Article Image</label>
           <input type="file" id="imagearticle" name="imagearticle" required class="mt-2 p-2 sm:p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
      

@@ -15,7 +15,8 @@ include "statistiquesAdmin.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bruxy Blog</title>
+    <link rel="icon" href="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>

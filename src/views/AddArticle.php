@@ -67,7 +67,6 @@ echo '
 
 } else {
     echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.')
-    window.location.href = 'userBlog.php';
     ;</script>";
 }
 }
@@ -83,7 +82,7 @@ echo '
         foreach ($selectedTags as $tagId) {
             $sql1 = "INSERT INTO Article_Tags (Id_Article,Id_Tags) VALUES ('$Article_Info[0]','$tagId')";
             mysqli_query($conn, $sql1);
-            header("Location: userBlog.php" );
+            echo "<script>window.location.href = window.location.href</script>";
         }
     }     
  

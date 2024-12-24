@@ -16,7 +16,8 @@ include "AddArticle.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bruxy Blog</title>
+    <link rel="icon" href="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
@@ -188,7 +189,7 @@ include "AddArticle.php";
   <div id="ArticleModel" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 hidden">
   <form id="ArticleForm" class="bg-white rounded-lg w-full max-w-[60rem] sm:max-w-3/4 md:max-w-2/3 p-4 sm:p-6 shadow-lg overflow-y-auto" method='POST' action='#' enctype="multipart/form-data" >
     <div class="flex justify-between items-center mb-4 sm:mb-6">
-      <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">Nouvelle Article</h2>
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">New Article</h2>
       <button  id="closearticlemodel" class="text-gray-500 hover:text-gray-700 focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -200,12 +201,12 @@ include "AddArticle.php";
       <!-- Left Side Inputs -->
       <div class="w-full max-w-[50rem] sm:w-2/3 space-y-4">
       <div class="flex flex-col">
-          <label for="Titre_Article" class="font-medium text-gray-600 text-sm sm:text-base">Title</label>
-          <input type="text" id="Titre_Article" name="Titre_Article" class="mt-2 p-2 sm:p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: First Principle of Machine Learning">
+          <label for="Titre_Article" class="font-medium text-gray-600 text-sm sm:text-base ">Title</label>
+          <input type="text" id="Titre_Article" name="Titre_Article" class="mt-2 p-2 sm:p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required  placeholder="Ex: First Principle of Machine Learning">
         </div>
         <div class="flex flex-col">
           <label for="Contenu_Article" class="font-medium text-gray-600 text-sm sm:text-base">Contenu</label>
-          <textarea name="Contenu_Article" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" rows="4" placeholder="Machine learning is..."></textarea>
+          <textarea name="Contenu_Article" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" rows="4" required placeholder="Machine learning is..."></textarea>
           </div>
  
       </div>
@@ -213,15 +214,8 @@ include "AddArticle.php";
       <!-- Right Side Inputs -->
       <div class="w-full sm:w-1/3 bg-gray-100 rounded-lg p-4 space-y-4">
         <div class="flex flex-col">
-          <label for="imagearticle" class="font-medium text-gray-600 text-sm sm:text-base">Image d'Article</label>
-          <input type="file" id="imagearticle" name="imagearticle" class="mt-2 p-2 sm:p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-        <div class="flex flex-col">
-          <label for="status" class="font-medium text-gray-600 text-sm sm:text-base">Tage</label>
-          <select id="status" name="status" class="mt-2 p-2 sm:p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="En Parc">tage1</option>
-            <option value="Sous Location">tage2</option>
-          </select>
+          <label for="imagearticle" class="font-medium text-gray-600 text-sm sm:text-base">Article Image</label>
+          <input type="file" id="imagearticle" name="imagearticle" required class="mt-2 p-2 sm:p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
      
       </div>

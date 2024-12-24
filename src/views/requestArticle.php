@@ -15,7 +15,8 @@ include "statistiquesAdmin.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bruxy Blog</title>
+    <link rel="icon" href="../../public/assets/images/Neon Green and Black Graffiti Urban Grunge Logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
@@ -122,9 +123,9 @@ include "statistiquesAdmin.php";
     <main class="p-6 sm:p-10 space-y-6">
     <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
         <div class="mr-6">
-          <h1 class="text-4xl font-semibold mb-2">User Information
+          <h1 class="text-4xl font-semibold mb-2">Article Pending Approval
           </h1>
-          <h2 class="text-gray-600 ml-0.5">Comprehensive list of all registered users on the platform</h2>
+          <h2 class="text-gray-600 ml-0.5">Articles submitted here will be reviewed and approved by the admin before being published.</h2>
         </div>
         <div class="flex flex-wrap items-start justify-end -mb-3">     
           <button id="addatrticle" class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
